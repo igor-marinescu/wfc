@@ -1,0 +1,57 @@
+
+Goto project directory and create virtual environment:
+
+    W:\projects\diverse_intern\python\wfc_test>python -m venv venv
+
+A 'venv' folder is created inside of project directory.
+
+
+Activate virtual environment:
+
+    W:\projects\diverse_intern\python\wfc_test>venv\Scripts\activate
+    
+'(venv)' is displayed at the beginning of the command line.
+
+
+Start project using virtual environment:
+
+    (venv) W:\projects\diverse_intern\python\wfc_test>python -m wfc_src
+
+Python doesn't find the missing pygame library:
+
+    Traceback (most recent call last):
+      File "C:\Program Files\Python37\lib\runpy.py", line 183, in _run_module_as_main
+        mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+      File "C:\Program Files\Python37\lib\runpy.py", line 142, in _get_module_details
+        return _get_module_details(pkg_main_name, error)
+      File "C:\Program Files\Python37\lib\runpy.py", line 109, in _get_module_details
+        __import__(pkg_name)
+      File "W:\projects\diverse_intern\python\wfc_test\wfc_src\__init__.py", line 5, in <module>
+        from wfc_src.wfc import WFC
+      File "W:\projects\diverse_intern\python\wfc_test\wfc_src\wfc.py", line 17, in <module>
+        import pygame
+    ModuleNotFoundError: No module named 'pygame'
+    
+
+Create a file in project directory with the name: requirements.txt and the text:
+    
+    pygame==1.9.6
+    
+
+Install missing library using requirements.txt file:
+
+    (venv) W:\projects\diverse_intern\python\wfc_test>pip install -r requirements.txt
+    
+
+The pygame library will be installed:
+
+    Collecting pygame==1.9.6 (from -r requirements.txt (line 1))
+      Downloading https://files.pythonhosted.org/packages/ed/56/b63ab3724acff69f4080e54c4bc5f55d1fbdeeb19b92b70acf45e88a5908/pygame-1.9.6-cp37-cp37m-win_amd64.whl (4.3MB)
+         || 4.3MB 6.4MB/s
+    Installing collected packages: pygame
+    Successfully installed pygame-1.9.6
+
+
+Start again the project using virtual environment:
+
+    (venv) W:\projects\diverse_intern\python\wfc_test>python -m wfc_src

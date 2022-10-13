@@ -1,0 +1,14 @@
+************* Module wfc_src
+wfc_src\__init__.py:7:15: W0613: Unused argument 'argv' (unused-argument)
+************* Module wfc_src.tilesman
+wfc_src\tilesman.py:326:0: C0301: Line too long (102/100) (line-too-long)
+wfc_src\tilesman.py:109:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+wfc_src\tilesman.py:123:0: R0902: Too many instance attributes (14/7) (too-many-instance-attributes)
+wfc_src\tilesman.py:199:12: W0707: Consider explicitly re-raising using 'raise SystemExit(message) from message' (raise-missing-from)
+wfc_src\tilesman.py:247:4: R0913: Too many arguments (7/5) (too-many-arguments)
+************* Module wfc_src.wfc
+wfc_src\wfc.py:52:4: R0912: Too many branches (16/12) (too-many-branches)
+
+------------------------------------------------------------------
+Your code has been rated at 9.75/10 (previous run: 9.73/10, +0.02)
+
