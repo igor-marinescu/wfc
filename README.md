@@ -1,5 +1,7 @@
 # WFC - Wavefunction Collapse Algorithm
 
+![Alt Intro](/docs/wfc_demo.gif)
+
 ![Alt Intro](/docs/wfc_intro.png)
 
 WFC is a simple implementation of a Wavefunction-Collapse algorithm. Written entirely in Python, it takes a set of Tiles as input and procedurally generates an output image. 
