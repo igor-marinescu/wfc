@@ -6,28 +6,6 @@
 
 WFC is a simple implementation of a Wavefunction-Collapse algorithm. Written entirely in Python, it takes a set of Tiles as input and procedurally generates an output image. 
 
-# Install and run
-
-Download the code to your computer. (Be sure Python is installed. If not, install it.)   
-Go to the project folder, create the virtual environment and install the requirements:
-```sh
-C:\test\wfc> python -m venv venv
-C:\test\wfc> venv\Scripts\activate
-C:\test\wfc> pip install -r requirements.txt
-```
-Run the algorithm:
-```sh
-C:\test\wfc> python -m wfc_src
-```
-
-## Controls
-
-| Key | Function |
-| --- | -------- |
-| c | Clear the input set |
-| 1 | Generate output image (slow/animation mode) |
-| 2 | Generate output image (instant mode) |
-
 # Algorithm breakdown
 
 ![Alt Tile-Definition](/docs/wfc_diagrams.png)
@@ -63,6 +41,28 @@ The process is repeated until every Cell's wave-function is collapsed (it has on
 9. If no Tiles have been removed since step 4:
     -  Select a Cell with lowest entropy and collapse it (set to a random Tile from its list of possibilities).
 10. Jump to step 4.
+
+# Install and run
+
+Download the code to your computer. (Be sure Python is installed. If not, install it.)   
+Go to the project folder, create the virtual environment and install the requirements:
+```sh
+C:\test\wfc> python -m venv venv
+C:\test\wfc> venv\Scripts\activate
+C:\test\wfc> pip install -r requirements.txt
+```
+Run the algorithm:
+```sh
+C:\test\wfc> python -m wfc_src
+```
+
+## Controls
+
+| Key | Function |
+| --- | -------- |
+| c | Clear the input set |
+| 1 | Generate output image (slow/animation mode) |
+| 2 | Generate output image (instant mode) |
 
 # Author and license
 
