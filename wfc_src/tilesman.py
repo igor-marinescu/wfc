@@ -134,6 +134,8 @@ class TilesManager:
         self.img_many = None
         self.img_none = None
         self.img_last = None
+        self.img_entr = []      # Entropy image
+        self.val_entr = []      # Entropy value
         self.last_y = None
         self.last_x = None
 
@@ -235,14 +237,22 @@ class TilesManager:
             self.img_many = surface
             # no possibilities
             surface = pygame.Surface((64, 64))
-            surface.blit(img_surface, (0, 0), ((1 * 64), (9 * 64), 64, 64))
+            surface.blit(img_surface, (0, 0), ((0 * 64), (9 * 64), 64, 64))
             surface.set_colorkey((0, 0, 0))
             self.img_none = surface
             # last processed
             surface = pygame.Surface((64, 64))
-            surface.blit(img_surface, (0, 0), ((2 * 64), (9 * 64), 64, 64))
+            surface.blit(img_surface, (0, 0), ((1 * 64), (9 * 64), 64, 64))
             surface.set_colorkey((0, 0, 0))
             self.img_last = surface
+            # entropy images
+            for i in range(5):
+                surface = pygame.Surface((64, 64))
+                surface.blit(img_surface, (0, 0), (((i + 2) * 64), (9 * 64), 64, 64))
+                surface.set_colorkey((0, 0, 0))
+                self.img_entr.append(surface)
+                # calculate threshold for every entropy image
+                self.val_entr.append(int(len(self.tiles_def)/5) * (i + 1))
 
     def process_neighbor_cell(self, y_pos, x_pos, y_rel, x_rel, side_idx, main_set):
         """ Process neighbor cell. Generate the list of new possible Tiles
@@ -363,6 +373,8 @@ class TilesManager:
                 cell.changed = True
             else:
                 print("Finish!")
+                self.last_x = None
+                self.last_y = None
                 return False
         return True
 
@@ -411,6 +423,19 @@ class TilesManager:
             cell.processed = False
 
     # ##########################################################################
+    def get_entropy_image(self, entropy):
+        ''' Get Cell image based on its entropy. 
+        '''
+        if entropy < self.val_entr[0]:
+            return self.img_entr[0]
+        if entropy < self.val_entr[1]:
+            return self.img_entr[1]
+        if entropy < self.val_entr[2]:
+            return self.img_entr[2]
+        if entropy < self.val_entr[3]:
+            return self.img_entr[3]
+        return self.img_entr[4]
+
     def draw(self, surface):
         """ Draw all Tiles on a surface
         """
@@ -423,7 +448,8 @@ class TilesManager:
                 if lst_len == 0:
                     img = self.img_none
                 elif lst_len > 1:
-                    img = self.img_many
+                    #img = self.img_many
+                    img = self.get_entropy_image(lst_len)
                 else:
                     img = self.tiles_img[lst[0]]
                 if img is not None:

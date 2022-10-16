@@ -22,7 +22,7 @@ def _real_main(argv=None):
         path = os.path.dirname(path)
         path = os.path.dirname(path)
 
-    wfc = WFC(800, 800, path)
+    wfc = WFC(768, 768, path)
     #wfc = WFC(2000, 2000, path)
     wfc.run()
 
